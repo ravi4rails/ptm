@@ -1,0 +1,26 @@
+<div class="container">
+  <p id="notice"><%= notice %></p>
+
+  <p>
+    <strong>First_name:</strong>
+    <%= @user.first_name %>
+  </p>
+
+  <p>
+    <strong>Last_name:</strong>
+    <%= @user.last_name %>
+  </p>
+
+  <p>
+    <strong>Contact:</strong>
+    <%= @user.contact %>
+  </p>
+
+  <p>
+    <strong>Email:</strong>
+    <%= @user.email %>
+  </p>
+
+  <%= link_to 'Edit', edit_admin_user_path(@user), class: "btn btn-success" %> 
+  <%= link_to 'Back', admin_users_path, class: "btn btn-dark" %>
+</div>

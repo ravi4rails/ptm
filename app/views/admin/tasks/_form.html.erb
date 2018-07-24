@@ -1,0 +1,42 @@
+<%= form_for [:admin, @task] do |f| %>
+  <% if task.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(task.errors.count, "error") %> prohibited this task from being saved:</h2>
+
+      <ul>
+      <% task.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+  <% end %>
+
+  <div class="form-group">
+    <%= f.label :title %>
+    <br>
+    <%= f.text_field :title, id: :task_title, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :description %>
+    <br>
+    <%= f.text_area :description, id: :task_description, class: "form-control" %>
+  </div>
+
+  <div class="form-group">
+    <%= f.label :Project %>
+    <br>
+    <%= f.select :project_id, options_for_select(project_list, selected: @project.name), { include_blank: "Select Project" }, class: "form-control"%>
+  </div>
+
+  <div id="sub_tasks">
+    <%= f.fields_for :sub_tasks do |sub_task| %>
+      <%= render 'sub_task_fields', f: sub_task %>
+    <% end %>
+    <div class="links">
+      <%= link_to_add_association 'add sub_task', f, :sub_tasks, class: "btn btn-secondary mb-4" %>
+    </div>
+  </div>
+
+  <div class="actions">
+    <%= f.submit class: "btn btn-success"%>
+  </div>
+<% end %>
