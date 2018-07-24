@@ -15,3 +15,4 @@
 //= require admin/dashboard4
 //= require admin/jQuery.style.switcher
 //= require cocoon
+//= require tinymce
