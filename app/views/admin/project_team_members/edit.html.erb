@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Editing Project</h1>
+
+  <%= render 'form', project: @project_team_member %>
+
+  <%= link_to 'Show', admin_project_team_member_path(@project_team_member), class: "btn btn-info mt-3" %> 
+  <%= link_to 'Back', admin_project_team_members_path, class: "btn btn-dark mt-3 float-right" %>
+</div>

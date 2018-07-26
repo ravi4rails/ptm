@@ -1,11 +1,11 @@
 <div class="row page-titles">
   <div class="col-md-5 align-self-center">
-    <h3 class="text-themecolor">Whiz Finance Projects</h3>
+    <h3 class="text-themecolor">Whiz Finance Project Team Member</h3>
   </div>
   <div class="col-md-7 align-self-center">
     <ol class="breadcrumb">
       <li class="breadcrumb-item"><a href="javascript:void(0)">Dashboard</a></li>
-      <li class="breadcrumb-item active">Projects</li>
+      <li class="breadcrumb-item active">Project Team Members</li>
     </ol>
   </div>
 </div>
@@ -17,7 +17,7 @@
           <%= search_form_for [:admin, @q] do |f| %>
             <div class="row">
               <div class="col-md-9">
-              <%= f.search_field :name_or_description_cont, placeholder: "Search (name, description)", class: "form-control form-control-line" %>
+              <%= f.search_field :role_cont, placeholder: "Search (role)", class: "form-control form-control-line" %>
               </div>
               <div class="col-md-3">
                 <%= f.submit 'Search', value: 'Search', class: 'btn btn-block btn-outline-info' %>
@@ -33,33 +33,35 @@
     <div class="card">
       <div class="card-body">
         <h4 class="card-title">
-          Projects Database
+          Project Team Members Database
         </h4>
         <h6 class="card-subtitle">
-          <%= link_to 'Add Project', new_admin_project_path, class: 'btn btn-outline-primary' %>
+          <%= link_to 'Add Project Team Member', new_admin_project_team_member_path, class: 'btn btn-outline-primary' %>
         </h6>
         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="stack">
           <thead>
             <tr>
+              <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Role</th>
               <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Project name</th>
-              <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Description</th>
+              <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">User name</th>
               <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Action</th>
             </tr>
           </thead>
           <tbody>
-            <% @projects.each do |project|%>
+            <% @project_team_members.each do |pro_team|%>
               <tr>
-                <td class="title"><%= project.name %></td>
-                <td><%= project.description %></td>
+                <td class="title"><%= pro_team.role %></td>
+                <td><%= pro_team.project.name %></td>
+                <td><%= pro_team.user.name %></td>
                 <td>
                   <!-- change to rails button or link -->
-                  <%= link_to  admin_project_path(project), class: 'btn btn-outline-success waves-effect waves-light btn-xs' do %>
+                  <%= link_to  admin_project_team_member_path(pro_team), class: 'btn btn-outline-success waves-effect waves-light btn-xs' do %>
                     <i class="fa fa-eye"></i> Show
                   <% end %>
-                  <%= link_to edit_admin_project_path(project), class: 'btn btn-outline-primary waves-effect waves-light btn-xs' do %>
+                  <%= link_to edit_admin_project_team_member_path(pro_team), class: 'btn btn-outline-primary waves-effect waves-light btn-xs' do %>
                     <i class="fa fa-edit"></i> Edit
                   <% end %>
-                  <%= link_to admin_project_path(project), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger waves-effect waves-light btn-xs' do %>
+                  <%= link_to admin_project_team_member_path(pro_team), method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-outline-danger waves-effect waves-light btn-xs' do %>
                     <i class="fa fa-remove"></i> Delete
                   <% end %>
                 </td>
@@ -68,8 +70,8 @@
           </tbody>
         </table>
 
-        <% if @projects.present? %>
-          <%= paginate @projects %>
+        <% if @project_team_members.present? %>
+          <%= paginate @project_team_members %>
         <% end %>
       </div>
     </div>

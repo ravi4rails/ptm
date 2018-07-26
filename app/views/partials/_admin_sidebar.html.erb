@@ -18,6 +18,12 @@
           <% end %>
         </li>
         <li>
+          <%= link_to admin_project_team_members_path, class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
+            <i class="mdi mdi-calendar-multiple-check"></i>
+            <span class="hide-menu">Team Members </span>
+          <% end %>
+        </li>
+        <li>
           <%= link_to admin_tasks_path, class: 'waves-effect waves-dark', aria: { expanded: "false" } do %>
             <i class="mdi mdi-book"></i>
             <span class="hide-menu">Tasks </span>
