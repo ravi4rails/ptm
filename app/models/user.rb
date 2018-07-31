@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
   has_many :project_team_members, dependent: :destroy 
   has_many :projects, through: :project_team_members
-
+  mount_uploader :profile_pic, ProfilePicUploader
   paginates_per 10
   def self.to_csv(records)
     csv_generator = Csv::UserExportService.new(records)
