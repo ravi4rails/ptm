@@ -41,7 +41,7 @@
         <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="stack">
           <thead>
             <tr>
-              <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Project name</th>
+              <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Name</th>
               <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Description</th>
               <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="4">Action</th>
             </tr>
@@ -50,7 +50,7 @@
             <% @projects.each do |project|%>
               <tr>
                 <td class="title"><%= project.name %></td>
-                <td><%= project.description %></td>
+                <td><%= project.description.html_safe %></td>
                 <td>
                   <!-- change to rails button or link -->
                   <%= link_to  admin_project_path(project), class: 'btn btn-outline-success waves-effect waves-light btn-xs' do %>

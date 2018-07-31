@@ -8,8 +8,38 @@
 
   <p>
     <strong>Description:</strong>
-    <%= @project.description %>
+    <%= @project.description.html_safe %>
   </p>
+
+  <div class="row">
+    <div class="col-12 show-card">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">
+            Project Team Members:
+          </h5>
+          <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="stack">
+            <thead>
+              <tr>
+                <th scope="col" data-tablesaw-sortable-col data-tablesaw-priority="persist">Profile_Pic</th>
+                <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Name</th>
+                <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @project.project_team_members.each do |member| %>
+                <tr>
+                  <td><%= image_tag member.user.profile_pic.url, class: "profile-photo-size" %></td>
+                  <td class="title"><%= member.user.name %></td>
+                  <td><%= member.role %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <%= link_to 'Edit', edit_admin_project_path(@project), class: "btn btn-success" %> 
   <%= link_to 'Back', admin_projects_path, class: "btn btn-dark" %>

@@ -2,6 +2,11 @@
   <p id="notice"><%= notice %></p>
 
   <p>
+    <strong>Profile Photo:</strong>
+    <%= image_tag @user.profile_pic.url, class: "user-profile" %>
+  </p>
+
+  <p>
     <strong>First_name:</strong>
     <%= @user.first_name %>
   </p>
@@ -20,6 +25,34 @@
     <strong>Email:</strong>
     <%= @user.email %>
   </p>
+
+  <div class="row">
+    <div class="col-12 show-card">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">
+            Project Assign: 
+          </h5>
+          <table class="tablesaw table-bordered table-hover table" data-tablesaw-mode="stack">
+            <thead>
+              <tr>
+                <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Name</th>
+                <th scope="col" data-tablesaw-sortable-col data-tablesaw-sortable-default-col data-tablesaw-priority="3">Role</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% @user.project_team_members.each do |pro| %>
+                <tr>
+                  <td class="title"><%= pro.project.name %></td>
+                  <td><%= pro.role %></td>
+                </tr>
+              <% end %>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
 
   <%= link_to 'Edit', edit_admin_user_path(@user), class: "btn btn-success" %> 
   <%= link_to 'Back', admin_users_path, class: "btn btn-dark" %>
