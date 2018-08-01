@@ -56,14 +56,21 @@
 .profile-photo-size {
   height: 80px;
   width: 80px;
+  border: 2px solid #4ebca8;
+  border-radius: 50%;
 }
 .user-profile {
   height: 100px;
   width: 100px;
+  border: 2px solid #4ebca8;
+  border-radius: 50%;
 }
 .user-profile-index {
-  height: 50px;
-  width: 50px;
+  height: 60px;
+  width: 60px;
+  border: 2px solid #4ebca8;
+  border-radius: 50%;
+  margin-top: -15%;
 }
 .show-card {
   margin-left: -2%;
